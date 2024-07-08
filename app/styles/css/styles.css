@@ -1,0 +1,376 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Mukta:wght@200;300;400;500;600;700;800&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+html, body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 100%;
+  min-height: 100vh;
+  background-color: rgb(52, 50, 50);
+  color: white;
+  font-family: "Mukta", sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Archivo Black", sans-serif;
+}
+
+.backDrop {
+  background-color: rgb(49, 47, 47);
+  width: 100%;
+  min-height: 100vh;
+  position: fixed;
+  z-index: 9;
+  opacity: 50%;
+  transition: 500ms ease-in-out;
+}
+
+.out {
+  transition: 4000ms ease-out;
+}
+
+nav, footer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  padding: 0 0.5em;
+  background-color: rgb(49, 45, 45);
+  width: 100%;
+  z-index: 10;
+  top: 0;
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
+}
+nav .logo, footer .logo {
+  width: 5rem;
+}
+nav .toggleContainer, footer .toggleContainer {
+  display: none;
+  position: relative;
+}
+@media (max-width: 700px) {
+  nav .toggleContainer, footer .toggleContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    gap: 6px;
+    width: 50px;
+    padding: 0.4em;
+  }
+}
+nav .toggleContainer .toggleItem, footer .toggleContainer .toggleItem {
+  transition: 300ms ease-out;
+  background-color: white;
+  width: 85%;
+  height: 3px;
+  border-radius: 10px;
+}
+nav .toggleContainer .toggleItem:nth-child(2), footer .toggleContainer .toggleItem:nth-child(2) {
+  transition: 500ms ease-in-out;
+}
+nav .toggleContainer.active .toggleItem:nth-child(1), footer .toggleContainer.active .toggleItem:nth-child(1) {
+  transition: 300ms ease-in;
+  position: absolute;
+  transform: rotate(45deg);
+}
+nav .toggleContainer.active .toggleItem:nth-child(2), footer .toggleContainer.active .toggleItem:nth-child(2) {
+  transition: 500ms ease-in-out;
+  opacity: 0;
+}
+nav .toggleContainer.active .toggleItem:nth-child(3), footer .toggleContainer.active .toggleItem:nth-child(3) {
+  transition: 300ms ease-in;
+  position: absolute;
+  transform: rotate(-45deg);
+}
+nav .itemContainer, footer .itemContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  gap: 12px;
+  width: 20em;
+  background-color: rgb(49, 45, 45);
+}
+@media (max-width: 700px) {
+  nav .itemContainer, footer .itemContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    transition: 300ms ease-out;
+    gap: 20px;
+    position: fixed;
+    width: 10em;
+    min-height: 100vh;
+    top: 50px;
+    right: -40%;
+    z-index: 1;
+  }
+}
+@media (max-width: 700px) and (max-width: 700px) {
+  nav .itemContainer.active, footer .itemContainer.active {
+    transition: 300ms ease-in;
+    right: 0%;
+  }
+}
+nav .item, footer .item {
+  position: relative;
+  text-align: center;
+  width: 6em;
+  padding: 0.6em;
+  text-decoration: none;
+  color: white;
+  transition: 280ms ease-in;
+}
+nav .item::after, footer .item::after {
+  transition: 300ms ease-out;
+  content: "";
+  opacity: 0;
+}
+@media (max-width: 700px) {
+  nav .item:nth-child(1), footer .item:nth-child(1) {
+    margin-top: 20px;
+  }
+}
+nav .item:hover::after, footer .item:hover::after {
+  transition: 300ms ease-in;
+  content: "";
+  opacity: 100%;
+  position: absolute;
+  background-color: white;
+  min-width: 4em;
+  height: 2px;
+  top: 100%;
+  left: 19%;
+  border-radius: 5px;
+}
+
+footer {
+  position: relative;
+  margin-top: auto;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 13px;
+  padding: 0 0.5em;
+  margin-top: 60px;
+}
+.content .logo {
+  display: none;
+  width: 80%;
+}
+.content .logo.show {
+  animation: fadein 2000ms ease-in-out;
+  display: block;
+}
+.content .logo img {
+  display: block;
+  width: 80%;
+  margin-inline: auto;
+}
+@media (min-width: 750px) {
+  .content .logo {
+    width: 60%;
+  }
+  .content .logo img {
+    width: 60%;
+  }
+}
+.content .article, .content .skills {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 15px;
+  padding: 5px;
+  width: 90%;
+  min-height: 100px;
+  overflow-wrap: break-word;
+}
+.content .article h4, .content .skills h4, .content .article h2, .content .skills h2 {
+  visibility: hidden;
+  display: block;
+  transform: translateY(-120%);
+  padding: 0.2em;
+  width: 300px;
+  min-height: 20px;
+  transition: 500ms ease-out;
+}
+.content .article h4.show, .content .skills h4.show, .content .article h2.show, .content .skills h2.show {
+  visibility: visible;
+  transform: translateY(0);
+}
+.content .article h2, .content .skills h2 {
+  transform: translateY(60%);
+}
+.content .skills {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+.content .skills h3 {
+  margin-bottom: 20px;
+}
+.content .skills h3::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 1px;
+  background-color: rgb(255, 255, 255);
+  margin-top: 6px;
+}
+.content .skills ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 15px;
+}
+.content .skills ul li {
+  visibility: hidden;
+  transition: 500ms ease-in-out;
+  transform: translateX(-100%);
+}
+.content .skills ul li.slidein {
+  position: relative;
+  visibility: visible;
+  transition: 500ms ease-in;
+  transform: translateX(0);
+}
+.content .skills ul li.slidein::after {
+  content: "➡";
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 1px;
+  font-size: 25px;
+  top: -65%;
+  right: -110%;
+  background-color: rgb(1, 38, 83);
+  margin-top: 6px;
+}
+
+.projectsContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-template-rows: auto;
+  place-items: center;
+  gap: 30px;
+  background-color: rgb(64, 64, 64);
+  width: 96%;
+  min-height: 100px;
+  padding: 2em 1em;
+  margin: 65px auto 0 auto;
+}
+.projectsContainer:nth-child(2n) {
+  grid-column-end: span 5;
+}
+.projectsContainer .projectsCard {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-around;
+  width: 230px;
+  min-height: 230px;
+  background-color: white;
+  box-shadow: -1px 1px 1px 1px rgb(205, 205, 205);
+  color: black;
+  border-radius: 10px;
+  transform: scaleX(-1);
+  transition: 500ms ease-in;
+}
+.projectsContainer .projectsCard * {
+  transition: 500ms ease-in;
+  opacity: 0;
+}
+.projectsContainer .projectsCard.flip {
+  transition: 500ms ease-in-out;
+  transform: scaleX(1);
+}
+.projectsContainer .projectsCard.flip * {
+  transition: 500ms ease-in;
+  opacity: 100%;
+  animation: flipAnimation 480ms ease-in;
+}
+.projectsContainer .projectsCard .pic {
+  display: block;
+  -o-object-fit: contain;
+     object-fit: contain;
+  width: 90%;
+  margin-top: -15%;
+  margin-inline: auto;
+}
+.projectsContainer .projectsCard .name {
+  text-transform: capitalize;
+  font-family: "Archivo Black", sans-serif;
+  font-size: 16px;
+  align-self: center;
+  margin-top: -5%;
+}
+.projectsContainer .projectsCard .name::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: rgb(0, 0, 0);
+  margin-top: 6px;
+}
+.projectsContainer .projectsCard .view {
+  width: 50%;
+  font-family: "Mukta", sans-serif;
+  font-size: 17px;
+  font-weight: bold;
+  color: rgb(255, 255, 255);
+  background-color: rgb(0, 0, 0);
+  align-self: center;
+  margin-top: -5%;
+  text-decoration: none;
+  text-align: center;
+  border-radius: 10px;
+  padding: -0.1rem;
+  transition: 300ms ease-in;
+}
+.projectsContainer .projectsCard .view:hover {
+  transition: 300ms ease-in-out;
+  color: white;
+  background-color: rgb(0, 68, 128);
+  border: 1px solid grey;
+  transform: scale(0.98);
+}
+
+@keyframes fadein {
+  from {
+    opacity: 20%;
+  }
+  to {
+    opacity: 100%;
+  }
+}
+@keyframes flipAnimation {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 100%;
+  }
+}/*# sourceMappingURL=styles.css.map */

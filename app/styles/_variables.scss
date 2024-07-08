@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mukta:wght@200;300;400;500;600;700;800&display=swap');
+
+
+$title: "Archivo Black", sans-serif;
+$text: 'Mukta', sans-serif;
+
+$font: (
+    'title': $title ,
+    'text': $text,
+);
+
+
+
+$color : (
+    'background': rgb(52, 50, 50),
+    'nav': rgb(49, 45, 45) ,
+    'primaryBlue': rgb(0, 68, 128),
+)
