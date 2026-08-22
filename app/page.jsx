@@ -39,7 +39,7 @@ function Home() {
         ref={useIntersection("show")}
       >
         <p className="text-sm uppercase tracking-[0.3em] text-gold">About</p>
-        <div>
+        <div> 
           <h2 className="mb-5 text-3xl text-white md:text-4xl">
             Turning ideas into useful interfaces.
           </h2>
